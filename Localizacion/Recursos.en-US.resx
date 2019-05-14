@@ -123,22 +123,28 @@
   <data name="ErrorOtro" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="ErrorOtro2" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorOtro3" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="Otro" xml:space="preserve">
-    <value>Otro</value>
+    <value>Other</value>
   </data>
   <data name="Salido" xml:space="preserve">
-    <value>Hola Mundo</value>
+    <value>Hello world</value>
   </data>
   <data name="Saludo" xml:space="preserve">
-    <value>Otro</value>
+    <value>Other</value>
   </data>
   <data name="Saludo2" xml:space="preserve">
-    <value>Otro</value>
+    <value>Other</value>
   </data>
   <data name="Saludo3" xml:space="preserve">
-    <value>Otro</value>
+    <value>Other</value>
   </data>
   <data name="SaludoOtro" xml:space="preserve">
-    <value>Saludo Otro</value>
+    <value>Other Hey</value>
   </data>
 </root>

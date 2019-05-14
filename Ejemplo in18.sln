@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneradorRecursos", "Genera
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UI.vb", "UI.vb\UI.vb.vbproj", "{4EADBF38-A785-48E1-A6C3-05136EBCE6A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizacion", "Localizacion\Localizacion.csproj", "{A2454BF8-4EFD-4CF7-992C-6455E5DD47BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4EADBF38-A785-48E1-A6C3-05136EBCE6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EADBF38-A785-48E1-A6C3-05136EBCE6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EADBF38-A785-48E1-A6C3-05136EBCE6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2454BF8-4EFD-4CF7-992C-6455E5DD47BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2454BF8-4EFD-4CF7-992C-6455E5DD47BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2454BF8-4EFD-4CF7-992C-6455E5DD47BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2454BF8-4EFD-4CF7-992C-6455E5DD47BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

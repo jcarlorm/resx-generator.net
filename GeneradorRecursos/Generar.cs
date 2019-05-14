@@ -68,8 +68,8 @@ namespace GeneradorRecursos
             string[] errors = null;
             VBCodeProvider provider = new VBCodeProvider();
             CodeCompileUnit code = StronglyTypedResourceBuilder.Create($"{Ruta}{NombreArchivo}.resx", NombreArchivo,
-                                                                       string.Empty, provider,
-                                                                       false, out errors);
+                                                                       Namespace, provider,
+                                                                       true, out errors);
             if (errors.Length > 0)
                 foreach (var error in errors)
                     Console.WriteLine(error);
@@ -96,7 +96,7 @@ namespace GeneradorRecursos
                     CompiladorCS();
                     break;
                 case "vb":
-                    CompiladorVB();
+                    //CompiladorVB();
                     break;
                 default:
                     Console.WriteLine($"No posee compilador para: {Compilador}");
