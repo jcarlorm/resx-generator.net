@@ -7,10 +7,8 @@ namespace GeneradorRecursos
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Generando Recursos");
-            Generar generador = new Generar(ConfigurationManager.AppSettings["RutaDestino"].ToString());
-            generador.CrearRecursos();
-            Console.WriteLine("Terminando de generar...");
+            Ejecutor ejecutarTareas = new Ejecutor(ConfigurationManager.AppSettings["RutaDestino"].ToString());
+            ejecutarTareas.GenerarCodigo();
 
         }
     }

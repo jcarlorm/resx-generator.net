@@ -14,20 +14,9 @@ using Microsoft.VisualBasic;
 
 namespace GeneradorRecursos
 {
-    public class Generar
+    public class Generar : Configuracion
     {
-        private RecursosEntities db = new RecursosEntities();
-        private static string Ruta { get; set; }
-        private static string NombreArchivo => ConfigurationManager.AppSettings["NombreArchivo"].ToString();
-        private static string CulturaDefault => ConfigurationManager.AppSettings["CulturaDefault"].ToString();
-        private static string Compilador => ConfigurationManager.AppSettings["Compilador"].ToString();
-        private static string Namespace => ConfigurationManager.AppSettings["Namespace"].ToString();
-        private static List<string> Culturas => ConfigurationManager.AppSettings["Culturas"].ToString().Split(new char [] {','}).ToList();
-
-        public Generar(string ruta)
-        {
-            Ruta = ruta;
-        }
+        public Generar(string ruta) : base(ruta) { }
 
         static Func<string, string> ObtieneNombreArchivoResx = cultura =>
         {
@@ -62,6 +51,7 @@ namespace GeneradorRecursos
             sw.Close();
         };
 
+      
         static Action CompiladorVB = () =>
         {
             StreamWriter sw = new StreamWriter($"{Ruta}{NombreArchivo}.vb");

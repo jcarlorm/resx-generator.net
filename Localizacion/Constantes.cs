@@ -8,3 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace Localizacion {
+    
+    
+    public class Constantes {
+        
+        public static string Prueba = @string.Hola;
+    }
+}

@@ -55,7 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracion.cs" />
+    <Compile Include="Ejecutor.cs" />
     <Compile Include="Generar.cs" />
+    <Compile Include="GenerarConstantes.cs" />
     <Compile Include="Localizacion.cs">
       <DependentUpon>RecursosLocalizacion.tt</DependentUpon>
     </Compile>
