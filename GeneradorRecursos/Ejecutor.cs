@@ -15,17 +15,20 @@ namespace GeneradorRecursos
             if (GenerarRecursos)
             {
                 Console.WriteLine("Generando Recursos");
-                Generar generador = new Generar(Ruta);
-                generador.CrearRecursos();
+                new Generar(Ruta).CrearRecursos();
                 Console.WriteLine("Terminando de generar...");
             }
 
             if (GenerarConstantes)
             {
                 Console.WriteLine("Generando Constantes");
-                GenerarConstantes generador = new GenerarConstantes(Ruta);
-                generador.CrearConstantes();
+                new GenerarConstantes(Ruta).CrearConstantes();
                 Console.WriteLine("Terminando de generar...");
+            }
+
+            if (true)
+            {
+                new GenerarJSON(Ruta).CrearJSONConstantes();
             }
         }
         
