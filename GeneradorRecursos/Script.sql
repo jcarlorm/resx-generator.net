@@ -1,12 +1,26 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [Recursos]    Script Date: 14/5/2019 00:01:08 ******/
+
 CREATE DATABASE [Recursos]
-GO
 
 USE [Recursos]
 GO
-/****** Object:  Table [dbo].[Localizacion]    Script Date: 14/5/2019 00:01:08 ******/
+/****** Object:  Table [dbo].[Constantes]    Script Date: 17/5/2019 08:01:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Constantes](
+	[Nombre] [varchar](150) NOT NULL,
+	[Valor] [varchar](500) NOT NULL,
+	[Tipo] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Constantes] PRIMARY KEY CLUSTERED 
+(
+	[Nombre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Localizacion]    Script Date: 17/5/2019 08:01:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -23,7 +37,7 @@ CREATE TABLE [dbo].[Localizacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  StoredProcedure [dbo].[CreaActualizaLocalizacion]    Script Date: 14/5/2019 00:01:08 ******/
+/****** Object:  StoredProcedure [dbo].[CreaActualizaLocalizacion]    Script Date: 17/5/2019 08:01:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -67,4 +81,31 @@ BEGIN
 
 END
 GO
+/****** Object:  StoredProcedure [dbo].[CrearConstante]    Script Date: 17/5/2019 08:01:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[CrearConstante]
+@Nombre varchar(150),
+@Valor varchar(150),
+@Tipo varchar(150)
+as
+BEGIN
 
+	IF NOT EXISTS (SELECT 1 FROM Constantes WHERE Nombre = @Nombre)
+	BEGIN
+		INSERT INTO Constantes VALUES(UPPER(@Nombre), @Valor, @Tipo)
+		PRINT('Constante agregada con exito')
+	END
+	ELSE
+	BEGIN
+		PRINT('---- Constante existente NO SE AGREGO -----')
+	END
+
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [Recursos] SET  READ_WRITE 
+GO

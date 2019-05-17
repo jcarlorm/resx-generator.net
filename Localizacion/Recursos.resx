@@ -117,34 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ErrorOtro" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ErrorOtro2" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ErrorOtro3" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="Otro" xml:space="preserve">
-    <value>Otro</value>
-  </data>
-  <data name="Salido" xml:space="preserve">
-    <value>Hola Mundo</value>
-  </data>
   <data name="Saludo" xml:space="preserve">
-    <value>Otro</value>
+    <value>Hola</value>
   </data>
   <data name="Saludo2" xml:space="preserve">
-    <value>Otro</value>
-  </data>
-  <data name="Saludo3" xml:space="preserve">
-    <value>Otro</value>
-  </data>
-  <data name="SaludoOtro" xml:space="preserve">
-    <value>Saludo Otro</value>
+    <value>Hola</value>
   </data>
 </root>

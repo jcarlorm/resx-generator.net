@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -16,31 +17,54 @@ namespace GeneradorRecursos
 
         public void CrearJSONConstantes()
         {
-            Type constante = Type.GetType($"{Namespace}.{ClaseConstantes}");
+            dynamic constante = new ExpandoObject();
 
-            var constantes = Activator.CreateInstance(constante);
+            var constantes = from con in db.Constantes
+                             select con;
+            constantes.ToList().ForEach(c => {
+                AddProperty(constante, c.Nombre, c.Valor);
+            });
 
-            var root = new {
-                Constantes = constantes
-            };
-            var serializerSettings = new JsonSerializerSettings();
-            serializerSettings.ContractResolver = new StaticPropertyContractResolver();
 
-            string JSON = JsonConvert.SerializeObject(constante, serializerSettings);
-            var baseMembers = constante.GetMembers();
+            //Type constante = Type.GetType($"{Namespace}.{ClaseConstantes}");
 
-            Type type = Type.GetType($"{Namespace}.{ClaseConstantes}"); 
-            foreach (var p in type.GetProperties())
+            //var constantes = Activator.CreateInstance(constante);
+
+            var root = new
             {
-                var v = p.GetValue(null, null); // static classes cannot be instanced, so use null...
-            }
-            PropertyInfo[] staticMembers =
-                constante.GetProperties(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
+                Constantes = constante
+            };
+
+            string JSON = JsonConvert.SerializeObject(root);
+
+            //var serializerSettings = new JsonSerializerSettings();
+            //serializerSettings.ContractResolver = new StaticPropertyContractResolver();
+
+            //string JSON = JsonConvert.SerializeObject(constante, serializerSettings);
+            //var baseMembers = constante.GetMembers();
+
+            //Type type = Type.GetType($"{Namespace}.{ClaseConstantes}"); 
+            //foreach (var p in type.GetProperties())
+            //{
+            //    var v = p.GetValue(null, null); // static classes cannot be instanced, so use null...
+            //}
+            //PropertyInfo[] staticMembers =
+            //    constante.GetProperties(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
 
             StreamWriter sw = new StreamWriter($"{Ruta}{ClaseConstantes}.json");
             sw.Write(JSON);
             sw.Close();
 
+        }
+
+        public static void AddProperty(ExpandoObject expando, string propertyName, object propertyValue)
+        {
+            // ExpandoObject supports IDictionary so we can extend it like this
+            var expandoDict = expando as IDictionary<string, object>;
+            if (expandoDict.ContainsKey(propertyName))
+                expandoDict[propertyName] = propertyValue;
+            else
+                expandoDict.Add(propertyName, propertyValue);
         }
     }
 
@@ -59,4 +83,6 @@ namespace GeneradorRecursos
             return baseMembers;
         }
     }
+
+
 }

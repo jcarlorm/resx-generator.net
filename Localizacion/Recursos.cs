@@ -61,61 +61,7 @@ namespace Localizacion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error.
-        /// </summary>
-        public static string Error {
-            get {
-                return ResourceManager.GetString("Error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error.
-        /// </summary>
-        public static string ErrorOtro {
-            get {
-                return ResourceManager.GetString("ErrorOtro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error.
-        /// </summary>
-        public static string ErrorOtro2 {
-            get {
-                return ResourceManager.GetString("ErrorOtro2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error.
-        /// </summary>
-        public static string ErrorOtro3 {
-            get {
-                return ResourceManager.GetString("ErrorOtro3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Otro.
-        /// </summary>
-        public static string Otro {
-            get {
-                return ResourceManager.GetString("Otro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Hola Mundo.
-        /// </summary>
-        public static string Salido {
-            get {
-                return ResourceManager.GetString("Salido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Otro.
+        ///   Busca una cadena traducida similar a Hola.
         /// </summary>
         public static string Saludo {
             get {
@@ -124,29 +70,11 @@ namespace Localizacion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Otro.
+        ///   Busca una cadena traducida similar a Hola.
         /// </summary>
         public static string Saludo2 {
             get {
                 return ResourceManager.GetString("Saludo2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Otro.
-        /// </summary>
-        public static string Saludo3 {
-            get {
-                return ResourceManager.GetString("Saludo3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Saludo Otro.
-        /// </summary>
-        public static string SaludoOtro {
-            get {
-                return ResourceManager.GetString("SaludoOtro", resourceCulture);
             }
         }
     }
