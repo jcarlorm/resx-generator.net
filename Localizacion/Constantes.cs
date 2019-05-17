@@ -13,6 +13,10 @@ namespace Localizacion {
     
     public class Constantes {
         
+        public static bool CONSTANTE_BOOLEANA = true;
+        
         public static string PRIMERA_CONSTANTE = "prueba valor";
+        
+        public static string SEGUNDA_CONSTANTE = "prueba valor 2";
     }
 }

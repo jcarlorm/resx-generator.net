@@ -24,18 +24,16 @@ namespace GeneradorRecursos
         protected static Action<List<Constantes>> GenerarCampos = (constantes) => {
 
             constantes.ForEach(constante => {
-
                 CodeMemberField campoConstante = new CodeMemberField();
                 campoConstante.Name = constante.Nombre;
                 campoConstante.Type = new CodeTypeReference(Type.GetType(constante.Tipo));
-                campoConstante.Attributes = MemberAttributes.Public | MemberAttributes.Static;
+                campoConstante.Attributes = MemberAttributes.Public | MemberAttributes.Static; 
                 campoConstante.InitExpression = new CodePrimitiveExpression(convertirValorConstante(constante.Tipo, constante.Valor));
                 targetClass.Members.Add(campoConstante);
             });
         };
 
         protected static Func<string, string, object> convertirValorConstante = (tipo, valor) => {
-
             switch (tipo)
             {
                 case "System.Boolean":
@@ -50,19 +48,16 @@ namespace GeneradorRecursos
             targetClass.IsClass = true;
             targetClass.TypeAttributes = System.Reflection.TypeAttributes.Public;
             targetNamespace.Types.Add(targetClass);
-
             var constantes = from constante in db.Constantes
                              select constante;
 
             GenerarCampos(constantes.ToList());
-
             compileUnit.Namespaces.Add(targetNamespace);
             StreamWriter sw = new StreamWriter($"{Ruta}{ClaseConstantes}.cs");
             CSharpCodeProvider provider = new CSharpCodeProvider();
             provider.GenerateCodeFromCompileUnit(compileUnit, sw, new CodeGeneratorOptions());
             sw.Close();
         }
-
 
     }
 }
