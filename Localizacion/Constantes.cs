@@ -13,6 +13,8 @@ namespace Localizacion {
     
     public class Constantes {
         
-        public static string Prueba = @string.Hola;
+        public static string PRIMERA_CONSTANTE = "Prueba valor";
+        
+        public static bool PRIMERA_CONSTANTE_BOOL = true;
     }
 }

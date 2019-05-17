@@ -28,6 +28,7 @@ namespace GeneradorRecursos
         }
     
         public virtual DbSet<Localizacion> Localizacion { get; set; }
+        public virtual DbSet<Constantes> Constantes { get; set; }
     
         public virtual int CreaActualizaLocalizacion(string nombre, string mensajeES, string mensajeEN, string comentario)
         {
@@ -48,6 +49,23 @@ namespace GeneradorRecursos
                 new ObjectParameter("Comentario", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreaActualizaLocalizacion", nombreParameter, mensajeESParameter, mensajeENParameter, comentarioParameter);
+        }
+    
+        public virtual int CrearConstante(string nombre, string valor, string tipo)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var valorParameter = valor != null ?
+                new ObjectParameter("Valor", valor) :
+                new ObjectParameter("Valor", typeof(string));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CrearConstante", nombreParameter, valorParameter, tipoParameter);
         }
     }
 }

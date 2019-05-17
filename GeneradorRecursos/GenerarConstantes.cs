@@ -15,26 +15,46 @@ namespace GeneradorRecursos
 {
     public class GenerarConstantes : Configuracion
     {
+        protected static CodeCompileUnit compileUnit = new CodeCompileUnit();
+        protected static CodeNamespace targetNamespace = new CodeNamespace(Namespace);
+        protected static CodeTypeDeclaration targetClass = new CodeTypeDeclaration(ClaseConstantes);
 
         public GenerarConstantes(string ruta) : base(ruta) { }
 
+        protected static Action<List<Constantes>> GenerarCampos = (constantes) => {
+
+            constantes.ForEach(constante => {
+
+                CodeMemberField campoConstante = new CodeMemberField();
+                campoConstante.Name = constante.Nombre;
+                campoConstante.Type = new CodeTypeReference(Type.GetType(constante.Tipo));
+                campoConstante.Attributes = MemberAttributes.Public | MemberAttributes.Static;
+                campoConstante.InitExpression = new CodePrimitiveExpression(convertirValorConstante(constante.Tipo, constante.Valor));
+                targetClass.Members.Add(campoConstante);
+            });
+        };
+
+        protected static Func<string, string, object> convertirValorConstante = (tipo, valor) => {
+
+            switch (tipo)
+            {
+                case "System.Boolean":
+                    return Boolean.Parse(valor) ? true : false;
+                default:
+                    return valor.ToString();
+            }
+        };
+
         public void CrearConstantes()
         {
-            CodeCompileUnit compileUnit = new CodeCompileUnit();
-
-            CodeNamespace targetNamespace = new CodeNamespace(Namespace);
-
-            CodeTypeDeclaration targetClass = new CodeTypeDeclaration(ClaseConstantes);
             targetClass.IsClass = true;
             targetClass.TypeAttributes = System.Reflection.TypeAttributes.Public;
             targetNamespace.Types.Add(targetClass);
 
-            CodeMemberField testField = new CodeMemberField();
-            testField.Name = "Prueba";
-            testField.Type = new CodeTypeReference(typeof(string));
-            testField.Attributes = MemberAttributes.Public | MemberAttributes.Static;
-            testField.InitExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("string"), "Hola");
-            targetClass.Members.Add(testField);
+            var constantes = from constante in db.Constantes
+                             select constante;
+
+            GenerarCampos(constantes.ToList());
 
             compileUnit.Namespaces.Add(targetNamespace);
             StreamWriter sw = new StreamWriter($"{Ruta}{ClaseConstantes}.cs");

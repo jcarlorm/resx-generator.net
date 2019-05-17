@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracion.cs" />
+    <Compile Include="Constantes.cs">
+      <DependentUpon>RecursosLocalizacion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ejecutor.cs" />
     <Compile Include="Generar.cs" />
     <Compile Include="GenerarConstantes.cs" />
