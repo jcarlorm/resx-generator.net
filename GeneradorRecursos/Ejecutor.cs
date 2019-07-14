@@ -26,7 +26,7 @@ namespace GeneradorRecursos
                 Console.WriteLine("Terminando de generar...");
             }
 
-            if (true)
+            if (GenerarConstantesJSON)
             {
                 new GenerarJSON(Ruta).CrearJSONConstantes();
             }

@@ -19,6 +19,7 @@ namespace GeneradorRecursos
         public static string Ruta { get; set; }
         public static string NombreArchivo => ConfigurationManager.AppSettings["NombreArchivo"].ToString();
         public static bool GenerarConstantes => Boolean.Parse(ConfigurationManager.AppSettings["GenerarConstantes"].ToString());
+        public static bool GenerarConstantesJSON => Boolean.Parse(ConfigurationManager.AppSettings["GenerarConstantesJSON"].ToString());
         public static bool GenerarRecursos => Boolean.Parse(ConfigurationManager.AppSettings["GenerarRecursos"].ToString());
         public static string NombreArchivoConstantes => ConfigurationManager.AppSettings["NombreArchivoConstantes"].ToString();
         public static string CulturaDefault => ConfigurationManager.AppSettings["CulturaDefault"].ToString();
